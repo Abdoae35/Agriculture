@@ -1,0 +1,28 @@
+@model AgricultureFrontEnd.Models.Vm.AfforestationVM.AfforestationSearchVM
+
+@{
+    ViewBag.Title = "Make Search";
+    Layout = "_Layout";
+}
+
+<form asp-action="GetStatistics" asp-controller="Search" method="post" class="p-4 bg-light rounded shadow-sm" style="max-width: 500px; margin: auto;">
+    @Html.AntiForgeryToken()
+
+    <h4 class="mb-4 text-center">Select Duration</h4>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group mb-3">
+        <label>From Date:</label>
+        <input asp-for="FromDate" type="date" class="form-control" />
+        <span asp-validation-for="FromDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label>To Date:</label>
+        <input asp-for="ToDate" type="date" class="form-control" />
+        <span asp-validation-for="ToDate" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100" style="background-color: #14ae64">Search</button>
+</form>

@@ -1,0 +1,31 @@
+﻿<h2>Welcome!</h2>
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <p>Please <a asp-controller="Account" asp-action="Login">log in</a>.</p>
+}
+else
+{
+    <p>You are logged in as <b>@User.Identity.Name</b>.</p>
+
+    <p>
+        <a asp-controller="Account" asp-action="Logout">
+            Logout
+        </a>
+    </p>
+
+    @if (User.IsInRole("Admin"))
+    {
+        <h3>Admin Panel</h3>
+        <p>Only visible to Admins.</p>
+        <a asp-controller="AddNewTree" asp-action="Create" class="btn btn-primary" style="background-color: #14ae64">اضافه شجرة</a>
+        <a asp-controller="AddNewLocation" asp-action="Create" class="btn btn-primary" style="background-color: #14ae64">اضافه عنوان</a>
+        <a asp-controller="Search" asp-action="GetStatistics" class="btn btn-primary" style="background-color: #14ae64">بحث</a>
+    }
+    else if (User.IsInRole("User"))
+    {
+        <h3>User Dashboard</h3>
+        <a asp-controller="AddPlant" asp-action="Create" class="btn btn-primary" style="background-color: #14ae64">اضافة زراعة</a>
+        
+    }
+}

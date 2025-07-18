@@ -1,0 +1,28 @@
+@model TreeAddVm
+
+@{
+    ViewBag.Title = "Add New Tree";
+    Layout = "_Layout";
+}
+
+<form asp-action="Create" method="post" class="p-4 bg-light rounded shadow-sm" style="max-width: 500px; margin: auto;">
+    @Html.AntiForgeryToken()
+
+    <h4 class="mb-4 text-center">Add New Tree</h4>
+
+    <div class="form-group mb-3">
+        <label class="form-label">Tree Name</label>
+        <input asp-for="Name" class="form-control" placeholder="Enter tree name..." />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-4">
+        <label class="form-label">Select Tree Type</label>
+        <select asp-for="TreeType" asp-items="ViewBag.TypeList" class="form-select">
+            <option value="">-- Please select an option --</option>
+        </select>
+        <span asp-validation-for="TreeType" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100" style="background-color: #14ae64">Submit</button>
+</form>

@@ -1,0 +1,28 @@
+@model AgricultureFrontEnd.Models.Vm.AfforestationVM.AfforestationFormVM
+
+
+<form method="post">
+    <label>Tree Name</label>
+    <select asp-for="TreeNameId" class="form-control">
+        @foreach (var tree in Model.TreeNames)
+        {
+            <option value="@tree.Id">@tree.Name</option>
+        }
+    </select>
+
+    <label>Location Name</label>
+    <select asp-for="LocationNameId" class="form-control">
+        @foreach (var loc in Model.LocationNames)
+        {
+            <option value="@loc.Id">@loc.Name</option>
+        }
+    </select>
+
+    <label>Number</label>
+    <input asp-for="Number" class="form-control" />
+
+    <label>Date of Planting</label>
+    <input asp-for="DateOfPlanted" type="date" class="form-control" />
+
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+</form>
