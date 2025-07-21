@@ -8,7 +8,8 @@ public interface IUserRepo
     public User GetUserById(int id);
     public void InsertUser(User user);
     public void Update(User user);
-    public void DeleteUser(User user);
+    public Task<User?> GetUserByIdAsync(int id);
+    public Task DeleteUserAsync(User user);
     Task<User> GetByEmailAsync(string email);
     Task<User> GetByIdAsync(int id);
     Task AddAsync(User user);

@@ -31,6 +31,9 @@ public class UserController : ControllerBase
     public IActionResult GetById(int id)
     {
         var user = _manager.GetById(id);
+        
+        if(user == null)
+            return NotFound();
         return Ok(user);
     }
 
@@ -72,6 +75,21 @@ public class UserController : ControllerBase
             Email = user.Email
         });
     }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteUser(int id)
+    {
+        try
+        {
+            await _manager.DeleteAsync(id);
+            return Ok();
+        }
+        catch (ArgumentException ex)
+        {
+            return NotFound(ex.Message);
+        }
+    }
+
 
     private string GenerateJwtToken(User user)
     {

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HLRmKhpf7ng=",
+  "dgSpecHash": "qJ4HSo8GHuE=",
   "success": true,
-  "projectFilePath": "/Users/macbookpro/RiderProjects/Agriculture/Agriculture.DAL/Agriculture.DAL.csproj",
+  "projectFilePath": "/Users/macbookpro/RiderProjects/Agriculture/AgriBackend/Agriculture.DAL/Agriculture.DAL.csproj",
   "expectedPackageFiles": [
     "/Users/macbookpro/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",
     "/Users/macbookpro/.nuget/packages/azure.identity/1.7.0/azure.identity.1.7.0.nupkg.sha512",

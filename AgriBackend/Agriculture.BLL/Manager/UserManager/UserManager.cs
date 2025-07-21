@@ -55,9 +55,12 @@ public class UserManager : IUserManager
         }).ToList();
     }
 
-    public UserReadDto GetById(int id)
+    public UserReadDto? GetById(int id)
     {
         var user = _repo.GetUserById(id);
+        
+        if(user == null)
+            return null;
         return new UserReadDto
         {
             Id = user.Id,
@@ -76,18 +79,26 @@ public class UserManager : IUserManager
         {
             Email = user.Email,
             Name = user.Name,
-            Password = hashedPassword,  // ✅ Store hashed password.
+            Password = hashedPassword,  
             Role = user.Role
         };
         _repo.InsertUser(newUser);
     }
 
 
-    public void Delete(UserReadDto user)
+    public async Task DeleteAsync(int id)
     {
-        var userToDelete = _repo.GetUserById(user.Id);
-        _repo.DeleteUser(userToDelete);
+        var userToDelete = await _repo.GetUserByIdAsync(id);
+
+        if (userToDelete == null)
+        {
+            throw new ArgumentException($"User with ID {id} not found.");
+        }
+
+        await _repo.DeleteUserAsync(userToDelete);
     }
+
+
 
     public void Update(UserUpdateDto user)
     {
