@@ -1157,11 +1157,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/macbookpro/RiderProjects/AgricultureFrontEnd/AgricultureFrontEnd/AgricultureFrontEnd.csproj",
+      "projectUniqueName": "/Users/macbookpro/RiderProjects/AgricultureFrontEnd/AgriFrontEnd/AgricultureFrontEnd/AgricultureFrontEnd.csproj",
       "projectName": "AgricultureFrontEnd",
-      "projectPath": "/Users/macbookpro/RiderProjects/AgricultureFrontEnd/AgricultureFrontEnd/AgricultureFrontEnd.csproj",
+      "projectPath": "/Users/macbookpro/RiderProjects/AgricultureFrontEnd/AgriFrontEnd/AgricultureFrontEnd/AgricultureFrontEnd.csproj",
       "packagesPath": "/Users/macbookpro/.nuget/packages/",
-      "outputPath": "/Users/macbookpro/RiderProjects/AgricultureFrontEnd/AgricultureFrontEnd/obj/",
+      "outputPath": "/Users/macbookpro/RiderProjects/AgricultureFrontEnd/AgriFrontEnd/AgricultureFrontEnd/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/macbookpro/.nuget/NuGet/NuGet.Config"

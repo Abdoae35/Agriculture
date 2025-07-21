@@ -7,5 +7,5 @@ public class AfforestationAddVM
     public int TreeNameId { get; set; }
     public int LocationNameId { get; set; }
     public int LocationTypeId { get; set; }
-    public int Number { get; set; }
+    public int? Number { get; set; }
 }

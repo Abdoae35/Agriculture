@@ -5,20 +5,21 @@
     Layout = "_Layout";
 }
 
-<form asp-action="Create" method="post" class="p-4 bg-light rounded shadow-sm" style="max-width: 500px; margin: auto;">
+<form asp-action="Create" method="post" class="p-4 bg-light rounded shadow-sm"
+      style="max-width: 500px; margin: auto;" onsubmit="return validateForm();">
     @Html.AntiForgeryToken()
 
     <h4 class="mb-4 text-center">Add New Tree</h4>
 
     <div class="form-group mb-3">
         <label class="form-label">Tree Name</label>
-        <input asp-for="Name" class="form-control" placeholder="Enter tree name..." />
+        <input asp-for="Name" class="form-control" id="treeNameInput" placeholder="Enter tree name..." />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-4">
         <label class="form-label">Select Tree Type</label>
-        <select asp-for="TreeType" asp-items="ViewBag.TypeList" class="form-select">
+        <select asp-for="TreeType" asp-items="ViewBag.TypeList" class="form-select" id="treeTypeSelect">
             <option value="">-- Please select an option --</option>
         </select>
         <span asp-validation-for="TreeType" class="text-danger"></span>
@@ -26,3 +27,22 @@
 
     <button type="submit" class="btn btn-primary w-100" style="background-color: #14ae64">Submit</button>
 </form>
+
+<script>
+    function validateForm() {
+        const treeName = document.getElementById('treeNameInput').value.trim();
+        const treeType = document.getElementById('treeTypeSelect').value;
+
+        if (treeName === "") {
+            alert('Tree Name cannot be empty.');
+            return false;
+        }
+
+        if (treeType === "") {
+            alert('You must select a Tree Type.');
+            return false;
+        }
+
+        return true;
+    }
+</script>

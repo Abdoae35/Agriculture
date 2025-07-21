@@ -1,28 +1,67 @@
 @model AgricultureFrontEnd.Models.Vm.AfforestationVM.AfforestationFormVM
 
+<div class="d-flex justify-content-center">
+    <form method="post" onsubmit="return validateForm();" class="p-4 rounded shadow-sm" style="width: 400px; background-color: #f9f9f9;">
+        <div class="mb-2">
+            <label class="form-label">اسم الشجرة</label>
+            <select asp-for="TreeNameId" class="form-control" id="treeDropdown">
+                <option value="">اختر اسم الشجرة</option>
+                @foreach (var tree in Model.TreeNames)
+                {
+                    <option value="@tree.Id">@tree.Name</option>
+                }
+            </select>
+        </div>
 
-<form method="post">
-    <label>Tree Name</label>
-    <select asp-for="TreeNameId" class="form-control">
-        @foreach (var tree in Model.TreeNames)
-        {
-            <option value="@tree.Id">@tree.Name</option>
+        <div class="mb-2">
+            <label class="form-label">عنوان الزراعة</label>
+            <select asp-for="LocationNameId" class="form-control" id="locationDropdown">
+                <option value="">اختر العنوان</option>
+                @foreach (var loc in Model.LocationNames)
+                {
+                    <option value="@loc.Id">@loc.Name</option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-2">
+            <label class="form-label">الكمية</label>
+            <input name="Number" id="numberInput" class="form-control" type="number" min="1" placeholder="أدخل الكمية" />
+        </div>
+
+        <div class="mb-2">
+            <label class="form-label">التاريخ</label>
+            <input asp-for="DateOfPlanted" type="date" class="form-control" />
+            <span asp-validation-for="DateOfPlanted" class="text-danger small"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Submit</button>
+    </form>
+</div>
+
+<script>
+    function validateForm() {
+        const numberInput = document.getElementById('numberInput');
+        const numberValue = parseInt(numberInput.value);
+
+        const treeDropdown = document.getElementById('treeDropdown');
+        const locationDropdown = document.getElementById('locationDropdown');
+
+        if (treeDropdown.value === "") {
+            alert('يجب اختيار اسم الشجرة.');
+            return false;
         }
-    </select>
 
-    <label>Location Name</label>
-    <select asp-for="LocationNameId" class="form-control">
-        @foreach (var loc in Model.LocationNames)
-        {
-            <option value="@loc.Id">@loc.Name</option>
+        if (locationDropdown.value === "") {
+            alert('يجب اختيار عنوان الزراعة.');
+            return false;
         }
-    </select>
 
-    <label>Number</label>
-    <input asp-for="Number" class="form-control" />
+        if (isNaN(numberValue) || numberValue <= 0) {
+            alert('الكمية يجب ألا تكون فارغة أو أقل من 1.');
+            return false;
+        }
 
-    <label>Date of Planting</label>
-    <input asp-for="DateOfPlanted" type="date" class="form-control" />
-
-    <button type="submit" class="btn btn-primary mt-3">Submit</button>
-</form>
+        return true;
+    }
+</script>

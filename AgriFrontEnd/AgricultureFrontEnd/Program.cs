@@ -3,20 +3,24 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+// Global authentication policy
 builder.Services.AddControllersWithViews(options =>
 {
-    
     var policy = new AuthorizationPolicyBuilder()
         .RequireAuthenticatedUser()
         .Build();
+
     options.Filters.Add(new AuthorizeFilter(policy));
 });
 
-builder.Services.AddHttpClient();
+// Register named HttpClient for API
+builder.Services.AddHttpClient("BackendAPI", client =>
+{
+    client.BaseAddress = new Uri("http://localhost:5200/");
+});
+
 builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
-
 
 builder.Services.AddAuthentication("MyCookieAuth")
     .AddCookie("MyCookieAuth", options =>
@@ -25,12 +29,11 @@ builder.Services.AddAuthentication("MyCookieAuth")
         options.AccessDeniedPath = "/Account/AccessDenied";
     });
 
-
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-
+// Middleware setup
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -39,12 +42,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseSession();
-
-
 app.UseAuthentication();
 app.UseAuthorization();
 

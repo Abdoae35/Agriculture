@@ -5,20 +5,21 @@
     Layout = "_Layout";
 }
 
-<form asp-action="Create" method="post" class="p-4 bg-light rounded shadow-sm" style="max-width: 500px; margin: auto;">
+<form asp-action="Create" method="post" class="p-4 bg-light rounded shadow-sm"
+      style="max-width: 500px; margin: auto;" onsubmit="return validateForm();">
     @Html.AntiForgeryToken()
 
     <h4 class="mb-4 text-center">Add New Location</h4>
 
     <div class="form-group mb-3">
         <label class="form-label">Location Name</label>
-        <input asp-for="Name" class="form-control" placeholder="Enter location name..." />
+        <input asp-for="Name" class="form-control" id="locationNameInput" placeholder="Enter location name..." />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-4">
         <label class="form-label">Select Location Type</label>
-        <select asp-for="LocationType" asp-items="ViewBag.TypesList" class="form-select">
+        <select asp-for="LocationType" asp-items="ViewBag.TypesList" class="form-select" id="locationTypeSelect">
             <option value="">-- Please select an option --</option>
         </select>
         <span asp-validation-for="LocationType" class="text-danger"></span>
@@ -26,3 +27,22 @@
 
     <button type="submit" class="btn btn-primary w-100" style="background-color: #14ae64">Submit</button>
 </form>
+
+<script>
+    function validateForm() {
+        const locationName = document.getElementById('locationNameInput').value.trim();
+        const locationType = document.getElementById('locationTypeSelect').value;
+
+        if (locationName === "") {
+            alert('Location Name cannot be empty.');
+            return false;
+        }
+
+        if (locationType === "") {
+            alert('You must select a Location Type.');
+            return false;
+        }
+
+        return true;
+    }
+</script>

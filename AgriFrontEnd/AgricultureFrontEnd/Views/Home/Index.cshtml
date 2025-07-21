@@ -18,14 +18,36 @@ else
     {
         <h3>Admin Panel</h3>
         <p>Only visible to Admins.</p>
-        <a asp-controller="AddNewTree" asp-action="Create" class="btn btn-primary" style="background-color: #14ae64">اضافه شجرة</a>
-        <a asp-controller="AddNewLocation" asp-action="Create" class="btn btn-primary" style="background-color: #14ae64">اضافه عنوان</a>
-        <a asp-controller="Search" asp-action="GetStatistics" class="btn btn-primary" style="background-color: #14ae64">بحث</a>
+        <a asp-controller="AddNewTree" asp-action="Create" class="btn btn-success"
+           style="background-color: #14ae64; box-shadow: none;">
+            اضافه شجرة
+        </a>
+
+        <a asp-controller="AddNewLocation" asp-action="Create" class="btn btn-success"
+           style="background-color: #14ae64;   box-shadow: none;">
+            اضافه عنوان
+        </a>
+
+        <a asp-controller="Search" asp-action="GetStatistics" class="btn btn-success"
+           style="background-color: #14ae64;  box-shadow: none;">
+            بحث
+        </a>
+
+        <a asp-controller="Register" asp-action="Register" class="btn btn-success"
+           style="background-color: #14ae64;   box-shadow: none;">
+            اضافة مستخدم
+        </a>
+
+        <a asp-controller="Users" asp-action="ShowUsers" class="btn btn-success"
+           style="background-color: #14ae64; ; box-shadow: none;">
+            اظهار جميع المستخدمين
+        </a>
+
     }
     else if (User.IsInRole("User"))
     {
         <h3>User Dashboard</h3>
-        <a asp-controller="AddPlant" asp-action="Create" class="btn btn-primary" style="background-color: #14ae64">اضافة زراعة</a>
+        <a asp-controller="AddPlant" asp-action="Create" class="btn btn-success" style="background-color: #14ae64">اضافة زراعة</a>
         
     }
 }

@@ -15,7 +15,14 @@
 
             <div class="form-group mb-3">
                 <label asp-for="Password"></label>
-                <input asp-for="Password" type="password" class="form-control" />
+    
+                <div class="input-group">
+                    <input asp-for="Password" type="password" class="form-control" id="passwordInput" />
+                    <button type="button" class="btn btn-outline-secondary" onclick="togglePassword()" tabindex="-1">
+                        Show
+                    </button>
+                </div>
+    
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
 
@@ -28,3 +35,12 @@
         }
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('passwordInput');
+            passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+        }
+    </script>
+}
