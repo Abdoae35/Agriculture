@@ -4,7 +4,7 @@ using Agriculiture.BLL.Manager.TreeTypeManager;
 namespace Agriculture.API.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("[controller]/[action]")]
 public class TreeTypeController : ControllerBase
 {
     private readonly ITreeTypeManager _manager;

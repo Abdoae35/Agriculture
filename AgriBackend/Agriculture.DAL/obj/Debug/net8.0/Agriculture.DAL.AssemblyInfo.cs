@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Agriculture.DAL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5522785969638cc1411cf79585519443009fa6f0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+861ef9c31fe5dd426ec161b1c63a53f7554e747e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Agriculture.DAL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Agriculture.DAL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

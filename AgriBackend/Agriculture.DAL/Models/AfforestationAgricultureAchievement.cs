@@ -21,4 +21,8 @@ public class AfforestationAgricultureAchievement
     public int Number { get; set; }
     
     
+    public User User { get; set; }
+    public int UserId { get; set; }
+    
+    
 }

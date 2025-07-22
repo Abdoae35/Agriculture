@@ -8,6 +8,9 @@ public class AfforestationAgricultureAchievementReadDto
     public int TreeNameId { get; set; }
     
     public string LocationName { get; set; }
+
+    public string UserName { get; set; }
+    
    
     public int Number { get; set; }
 }

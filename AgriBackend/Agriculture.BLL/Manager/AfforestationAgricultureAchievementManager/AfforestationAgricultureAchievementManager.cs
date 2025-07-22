@@ -9,36 +9,41 @@ public class AfforestationAgricultureAchievementManager: IAfforestationAgricultu
         _repo = repo;
     }
 
-   public List<AfforestationAgricultureAchievementReadDto> Search(AfforestationSearchRequest request)
-{
-    IQueryable<AfforestationAgricultureAchievement> query = _repo.GetAll()
-        .Include(x => x.TreeType)
-        .Include(x => x.TreeName)
-        .Include(x => x.LocationName)
-        .Include(x => x.LocationType);
-
-    if (request.FromDate.HasValue)
+    public List<AfforestationAgricultureAchievementReadDto> Search(AfforestationSearchRequest request)
     {
-        query = query.Where(x => x.DateOfPlanted >= request.FromDate.Value);
+        IQueryable<AfforestationAgricultureAchievement> query = _repo.GetAll()
+            .Include(x => x.TreeType)
+            .Include(x => x.TreeName)
+            .Include(x => x.LocationName)
+            .Include(x => x.LocationType)
+            .Include(x => x.User);
+
+        if (request.FromDate.HasValue)
+            query = query.Where(x => x.DateOfPlanted >= request.FromDate.Value);
+
+        if (request.ToDate.HasValue)
+            query = query.Where(x => x.DateOfPlanted <= request.ToDate.Value);
+
+        if (request.SelectedUserId.HasValue)
+            query = query.Where(x => x.UserId == request.SelectedUserId);
+
+        if (request.SelectedLocationId.HasValue)
+            query = query.Where(x => x.LocationNameId == request.SelectedLocationId);
+
+        if (request.SelectedTreeId.HasValue)
+            query = query.Where(x => x.TreeNameId == request.SelectedTreeId);
+
+        return query.Select(x => new AfforestationAgricultureAchievementReadDto()
+        {
+            Id = x.Id,
+            DateOfPlanted = x.DateOfPlanted,
+            TreeName = x.TreeName.Name,
+            LocationName = x.LocationName.Name,
+            Number = x.Number,
+            TreeNameId = x.TreeNameId,
+            UserName = x.User.Name
+        }).ToList();
     }
-
-    if (request.ToDate.HasValue)
-    {
-        query = query.Where(x => x.DateOfPlanted <= request.ToDate.Value);
-    }
-
-    return query.Select(x => new AfforestationAgricultureAchievementReadDto()
-    {
-        Id = x.Id,
-        DateOfPlanted = x.DateOfPlanted,
-        
-        TreeName = x.TreeName.Name,
-        LocationName = x.LocationName.Name,
-       
-        Number = x.Number,
-        TreeNameId = x.TreeNameId,
-    }).ToList();
-}
 
     
 
@@ -66,7 +71,8 @@ public class AfforestationAgricultureAchievementManager: IAfforestationAgricultu
             LocationTypeId = afforestationAddDto.LocationTypeId,
             Number = afforestationAddDto.Number,
             TreeNameId = afforestationAddDto.TreeNameId,
-            LocationNameId = afforestationAddDto.LocationNameId
+            LocationNameId = afforestationAddDto.LocationNameId,
+            UserId = afforestationAddDto.UserId
         };
         await _repo.Insert(newAgri);
     }

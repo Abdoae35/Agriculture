@@ -2,7 +2,7 @@
 
 namespace Agriculture.API.Controllers;
 [ApiController]
-[Route("api/locationtypes")]
+[Route("[controller]/[action]")]
 public class LocationTypeController : ControllerBase
 {
    private readonly ILocationTypeManager _manager;

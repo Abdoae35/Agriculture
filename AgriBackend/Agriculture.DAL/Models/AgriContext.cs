@@ -10,17 +10,14 @@ public class AgriContext : DbContext
         
     }
     
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        base.OnConfiguring(optionsBuilder);
-        
-    }
+    
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfiguration(new TreeTypeConfiguration());
         modelBuilder.ApplyConfiguration(new LocationNamesConfiguration());
+        modelBuilder.ApplyConfiguration(new AfforestationConfiguration());
     }
 
 

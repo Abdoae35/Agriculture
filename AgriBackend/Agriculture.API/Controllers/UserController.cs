@@ -31,9 +31,10 @@ public class UserController : ControllerBase
     public IActionResult GetById(int id)
     {
         var user = _manager.GetById(id);
-        
-        if(user == null)
+
+        if (user == null)
             return NotFound();
+
         return Ok(user);
     }
 
@@ -47,7 +48,7 @@ public class UserController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterDto dto)
     {
-        var message = await _manager.RegisterAsync(dto, Roles.User);
+        var message = await _manager.RegisterAsync(dto, dto.Role);  
         return Ok(message);
     }
 
@@ -72,6 +73,7 @@ public class UserController : ControllerBase
         {
             Token = token,
             Role = user.Role.ToString(),
+            Id = user.Id,        
             Email = user.Email
         });
     }
@@ -90,7 +92,6 @@ public class UserController : ControllerBase
         }
     }
 
-
     private string GenerateJwtToken(User user)
     {
         var jwtKey = _config["Jwt:Key"];
@@ -103,7 +104,8 @@ public class UserController : ControllerBase
         var claims = new[]
         {
             new Claim(ClaimTypes.Name, user.Email),
-            new Claim(ClaimTypes.Role, user.Role.ToString())
+            new Claim(ClaimTypes.Role, user.Role.ToString()),
+            new Claim("UserId", user.Id.ToString())   // ✅ Add UserId as a claim (optional but recommended)
         };
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
