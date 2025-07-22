@@ -30,6 +30,14 @@
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
 
+            <div class="form-group mb-3">
+                <label asp-for="Role"></label>
+                <select asp-for="Role" asp-items="Html.GetEnumSelectList<Roles>()" class="form-control" id="roleSelect">
+                    <option value="">Select Role</option> 
+                </select>
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+
             <button type="submit" class="btn btn-primary w-100" style="background-color: #14ae64">Register</button>
         </form>
 
@@ -41,6 +49,8 @@
 </div>
 
 @section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
     <script>
         function togglePassword() {
             const passwordInput = document.getElementById('passwordInput');
@@ -51,6 +61,7 @@
             const name = document.getElementById('nameInput').value.trim();
             const email = document.getElementById('emailInput').value.trim();
             const password = document.getElementById('passwordInput').value.trim();
+            const role = document.getElementById('roleSelect').value;
 
             if (name === "") {
                 alert("Name cannot be empty.");
@@ -64,6 +75,11 @@
 
             if (password === "") {
                 alert("Password cannot be empty.");
+                return false;
+            }
+
+            if (role === "") {
+                alert("You must select a Role.");
                 return false;
             }
 

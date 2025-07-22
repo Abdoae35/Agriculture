@@ -16,7 +16,7 @@ public class UsersController : Controller
     {
         using var client = _httpClientFactory.CreateClient();
         var response = await client.GetFromJsonAsync<List<UserReadVM>>(
-            "http://localhost:5200/User/GetAll");
+            "https://localhost:7197/User/GetAll");
 
         return View(response);
     }
@@ -31,7 +31,7 @@ public class UsersController : Controller
             return RedirectToAction(nameof(ShowUsers));
         }
 
-        var url = $"http://localhost:5200/User/DeleteUser/{id}";
+        var url = $"https://localhost:7197/User/DeleteUser/{id}";
         Console.WriteLine($"Attempting DELETE request to URL: {url}");
 
         var response = await client.DeleteAsync(url);

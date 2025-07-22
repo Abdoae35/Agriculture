@@ -16,7 +16,7 @@ builder.Services.AddControllersWithViews(options =>
 // Register named HttpClient for API
 builder.Services.AddHttpClient("BackendAPI", client =>
 {
-    client.BaseAddress = new Uri("http://localhost:5200/");
+    client.BaseAddress = new Uri("https://localhost:7197/");
 });
 
 builder.Services.AddSession();

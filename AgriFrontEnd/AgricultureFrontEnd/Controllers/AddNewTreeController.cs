@@ -13,12 +13,12 @@ public class AddNewTreeController : Controller
     public AddNewTreeController(HttpClient  client)
     {
         _client = client; 
-        _client.BaseAddress = new Uri("http://localhost:5200/");
+        _client.BaseAddress = new Uri("https://localhost:7197/");
     }
 
     public async Task<IActionResult> Create()
     {
-        var types = await _client.GetFromJsonAsync<List<TreeTypeReadVM>>("api/TreeType");
+        var types = await _client.GetFromJsonAsync<List<TreeTypeReadVM>>("TreeType/GetAllTreeType");
 
         
         ViewBag.TypeList = new SelectList(types, "Type", "Type");
@@ -30,7 +30,7 @@ public class AddNewTreeController : Controller
     {
         if (!ModelState.IsValid)
         {
-            var types = await _client.GetFromJsonAsync<List<TreeTypeReadVM>>("api/TreeType");
+            var types = await _client.GetFromJsonAsync<List<TreeTypeReadVM>>("TreeType/GetAllTreeType");
             ViewBag.TypeList = new SelectList(types, "Type", "Type");
             return View(model);
         }

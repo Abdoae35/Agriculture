@@ -1,5 +1,10 @@
 @model AgricultureFrontEnd.Models.Vm.AfforestationVM.AfforestationFormVM
 
+@{
+    var today = DateTime.Now.ToString("yyyy-MM-dd");
+    var minDate = DateTime.Now.AddDays(-14).ToString("yyyy-MM-dd");
+}
+
 <div class="d-flex justify-content-center">
     <form method="post" onsubmit="return validateForm();" class="p-4 rounded shadow-sm" style="width: 400px; background-color: #f9f9f9;">
         <div class="mb-2">
@@ -30,8 +35,13 @@
         </div>
 
         <div class="mb-2">
-            <label class="form-label">التاريخ</label>
-            <input asp-for="DateOfPlanted" type="date" class="form-control" />
+            <label class="form-label">التاريخ (آخر أسبوعين فقط)</label>
+            <input asp-for="DateOfPlanted"
+                   type="date"
+                   class="form-control"
+                   min="@minDate"
+                   max="@today"
+                   id="dateInput" />
             <span asp-validation-for="DateOfPlanted" class="text-danger small"></span>
         </div>
 
@@ -46,6 +56,17 @@
 
         const treeDropdown = document.getElementById('treeDropdown');
         const locationDropdown = document.getElementById('locationDropdown');
+        const dateInput = document.getElementById('dateInput');
+
+        const today = new Date();
+        const selectedDate = new Date(dateInput.value);
+        const minDate = new Date();
+        minDate.setDate(today.getDate() - 14);
+
+        // Reset time portion for accurate comparison
+        today.setHours(0, 0, 0, 0);
+        selectedDate.setHours(0, 0, 0, 0);
+        minDate.setHours(0, 0, 0, 0);
 
         if (treeDropdown.value === "") {
             alert('يجب اختيار اسم الشجرة.');
@@ -59,6 +80,16 @@
 
         if (isNaN(numberValue) || numberValue <= 0) {
             alert('الكمية يجب ألا تكون فارغة أو أقل من 1.');
+            return false;
+        }
+
+        if (selectedDate > today) {
+            alert('لا يمكن اختيار تاريخ في المستقبل.');
+            return false;
+        }
+
+        if (selectedDate < minDate) {
+            alert('يمكنك اختيار تاريخ من آخر أسبوعين فقط.');
             return false;
         }
 

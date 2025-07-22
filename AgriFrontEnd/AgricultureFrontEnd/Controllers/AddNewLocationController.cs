@@ -14,14 +14,14 @@ public class AddNewLocationController : Controller
    public AddNewLocationController(HttpClient client)
    {
       _client = client;
-      _client.BaseAddress = new Uri("http://localhost:5200/");
+      _client.BaseAddress = new Uri("https://localhost:7197/");
    }
 
 
 
    public async Task<IActionResult> Create()
    {
-      var types = await _client.GetFromJsonAsync<List<LocationTypeReadVm>>("api/locationtypes");
+      var types = await _client.GetFromJsonAsync<List<LocationTypeReadVm>>("LocationType/GetAll");
       
       ViewBag.TypesList = new SelectList(types, "LocationType", "LocationType");
       
@@ -33,7 +33,7 @@ public class AddNewLocationController : Controller
    {
       if (!ModelState.IsValid)
       {
-         var types = await _client.GetFromJsonAsync<List<LocationTypeReadVm>>("api/locationtypes");
+         var types = await _client.GetFromJsonAsync<List<LocationTypeReadVm>>("LocationType/GetAll");
          ViewBag.TypesList = new SelectList(types, "LocationType", "LocationType");
 
       }

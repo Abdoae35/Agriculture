@@ -22,6 +22,14 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/macbookpro/RiderProjects/AgricultureFrontEnd/AgriFrontEnd/AgricultureFrontEnd/Views/AddLocationType/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRkTG9jYXRpb25UeXBlL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/macbookpro/RiderProjects/AgricultureFrontEnd/AgriFrontEnd/AgricultureFrontEnd/Views/AddLocationType/Success.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRkTG9jYXRpb25UeXBlL1N1Y2Nlc3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/macbookpro/RiderProjects/AgricultureFrontEnd/AgriFrontEnd/AgricultureFrontEnd/Views/AddNewLocation/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRkTmV3TG9jYXRpb24vQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -44,6 +52,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/macbookpro/RiderProjects/AgricultureFrontEnd/AgriFrontEnd/AgricultureFrontEnd/Views/AddPlant/Success.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRkUGxhbnQvU3VjY2Vzcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/macbookpro/RiderProjects/AgricultureFrontEnd/AgriFrontEnd/AgricultureFrontEnd/Views/AddTreeType/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRkVHJlZVR5cGUvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/macbookpro/RiderProjects/AgricultureFrontEnd/AgriFrontEnd/AgricultureFrontEnd/Views/AddTreeType/Success.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRkVHJlZVR5cGUvU3VjY2Vzcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/macbookpro/RiderProjects/AgricultureFrontEnd/AgriFrontEnd/AgricultureFrontEnd/Views/Home/Index.cshtml]

@@ -6,6 +6,7 @@ public class AfforestationReadVM
     public DateOnly DateOfPlanted { get; set; }
     public string TreeName { get; set; }
     
+    public string UserName { get; set; }
     
     public string LocationName { get; set; }
     

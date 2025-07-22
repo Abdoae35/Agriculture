@@ -1,0 +1,72 @@
+@model TreeTypePageVM
+
+@{
+ViewBag.Title = "Add New Tree Type";
+Layout = "_Layout";
+}
+
+<form asp-action="Create" method="post" class="p-4 bg-light rounded shadow-sm"
+      style="max-width: 500px; margin: auto;" onsubmit="return validateForm();">
+    @Html.AntiForgeryToken()
+
+    <h4 class="mb-4 text-center">Add New Tree Type</h4>
+
+    <div class="form-group mb-3">
+        <label class="form-label">Tree Type Name</label>
+        <input asp-for="AddModel.Type" class="form-control" id="treeTypeInput" placeholder="Enter tree type name..." />
+        <span asp-validation-for="AddModel.Type" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100" style="background-color: #14ae64">Submit</button>
+</form>
+
+<br />
+
+<h3 class="mb-4 text-center">All Tree Types</h3>
+
+@if (!Model.AllTypes.Any())
+{
+<div class="alert alert-warning text-center">
+    No Tree Types Found!
+</div>
+}
+else
+{
+<div class="table-responsive">
+    <table class="table table-hover table-bordered align-middle text-center shadow-sm">
+        <thead style="background-color: #14ae64">
+        <tr style="color: white">
+            <th>Tree Type Name</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.AllTypes)
+        {
+        <tr>
+            <td>@item.Type</td>
+            <td>
+                <a asp-action="Delete"
+                   asp-route-id="@item.Id"
+                   class="btn btn-danger"
+                   onclick="return confirm('Are you sure you want to delete: @item.Type?');">
+                    Delete
+                </a>
+            </td>
+        </tr>
+        }
+        </tbody>
+    </table>
+</div>
+}
+
+<script>
+    function validateForm() {
+        const typeName = document.getElementById('treeTypeInput').value.trim();
+        if (typeName === "") {
+            alert('Tree Type Name cannot be empty.');
+            return false;
+        }
+        return true;
+    }
+</script>

@@ -42,6 +42,14 @@ else
            style="background-color: #14ae64; ; box-shadow: none;">
             اظهار جميع المستخدمين
         </a>
+        <a asp-controller="AddTreeType" asp-action="Create" class="btn btn-success"
+           style="background-color: #14ae64; ; box-shadow: none;">
+            اضافة نوع شجرة جديد
+        </a>
+        <a asp-controller="AddLocationType" asp-action="Create" class="btn btn-success"
+           style="background-color: #14ae64; ; box-shadow: none;">
+            اضافة نوع عنوان جديد
+        </a>
 
     }
     else if (User.IsInRole("User"))
@@ -49,5 +57,13 @@ else
         <h3>User Dashboard</h3>
         <a asp-controller="AddPlant" asp-action="Create" class="btn btn-success" style="background-color: #14ae64">اضافة زراعة</a>
         
+    }
+    else if(User.IsInRole(nameof(Roles.Viewer)))
+    {
+        <h3>Viewer Dashboard</h3>
+        <a asp-controller="Search" asp-action="GetStatistics" class="btn btn-success"
+           style="background-color: #14ae64;  box-shadow: none;">
+            بحث
+        </a>
     }
 }
