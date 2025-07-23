@@ -1,0 +1,56 @@
+@model  List<TreeReadVM>
+
+@{
+    ViewBag.Title = " Show All Trees";
+    Layout = "_Layout";
+}
+
+
+<h3 class="mb-4 text-center">All Trees</h3>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-warning text-center">
+        No Trees Found.
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered align-middle text-center shadow-sm" >
+            <thead  style="background-color: #14ae64">
+            <tr style="color: white">
+                <th>Tree Name</th>
+                <th>Tree Type</th>
+                <th>Delete Tree</th>
+               
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Type</td>
+                   
+                    <td>
+                        <a asp-controller="ShowData"
+                           asp-action="DeleteTree"
+                           asp-route-id="@item.Id"
+                           class="btn btn-danger"
+                           onclick="return confirm('Are you sure you want to delete the Tree: @item.Name?');">
+                            حذف الشجرة
+                        </a>
+
+                    </td>
+                   
+                </tr>
+            }
+            </tbody>
+        </table>
+
+        
+        
+    </div>
+
+}

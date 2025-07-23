@@ -50,6 +50,14 @@ else
            style="background-color: #14ae64; ; box-shadow: none;">
             اضافة نوع عنوان جديد
         </a>
+        <a asp-controller="ShowData" asp-action="AllTrees" class="btn btn-success"
+           style="background-color: #14ae64; ; box-shadow: none;">
+            اظهار جميع الاشجار
+        </a>
+        <a asp-controller="ShowData" asp-action="AllLocations" class="btn btn-success"
+           style="background-color: #14ae64; ; box-shadow: none;">
+            اظهار جميع العناوين
+        </a>
 
     }
     else if (User.IsInRole("User"))

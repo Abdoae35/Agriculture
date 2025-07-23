@@ -90,6 +90,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/macbookpro/RiderProjects/AgricultureFrontEnd/AgriFrontEnd/AgricultureFrontEnd/Views/ShowData/AllLocations.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hvd0RhdGEvQWxsTG9jYXRpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/macbookpro/RiderProjects/AgricultureFrontEnd/AgriFrontEnd/AgricultureFrontEnd/Views/ShowData/AllTrees.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hvd0RhdGEvQWxsVHJlZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/macbookpro/RiderProjects/AgricultureFrontEnd/AgriFrontEnd/AgricultureFrontEnd/Views/Users/ShowUsers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlcnMvU2hvd1VzZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
